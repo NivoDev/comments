@@ -17,4 +17,4 @@ app.use(bodyParser.json());
 app.use(commentsRouter)
 
 
-app.listen(4000, () => console.log('Comments app is running!'))
+app.listen(process.env.PORT || 4000, () => console.log('Comments app is running!'))

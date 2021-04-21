@@ -1,4 +1,4 @@
-import {model, Schema, Types} from 'mongoose';
+import { model, Schema, Types } from 'mongoose';
 
 const CommentSchema = new Schema({
     entity: {
@@ -6,23 +6,23 @@ const CommentSchema = new Schema({
         index: true,
         required: true
     },
-    comment: {
-        text:{
-            type: String,
-            required: true
-        },
-        commentedBy:{
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-            required: true,
-            user: String,
-        }, 
-        uploadTime:{
-            type: Date,
-            default: Date()
+    content: {
+        type: String,
+        required: true
     },
-    isDeleted: false  
-}});
+    user: {
+        type: Schema.Types.ObjectId,
+        required: true,
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    deleted: {
+        type: Boolean,
+        default: () => false
+    }
+});
 
 const Comment = model('Comment', CommentSchema);
 
