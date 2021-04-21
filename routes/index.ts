@@ -1,10 +1,11 @@
-import {Router} from 'express';
-import {getComments, createComment, updateComment, deleteComment} from '../contorollers/comments'
+import { Router } from 'express';
+import { getComments, createComment, updateComment, deleteComment } from '../controllers/comments'
 
 const commentsRouter = Router();
 
-const verifyUser = () => {
-
+const verifyUser = (req, res, next) => {
+    req.user = { _id: "6080448d9d930c4c2ca1cb1c"};
+    next();
 }
 
 
